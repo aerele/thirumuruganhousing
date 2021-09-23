@@ -1,0 +1,187 @@
+{
+ "actions": [],
+ "autoname": "field:serial",
+ "creation": "2021-07-31 18:26:52.790336",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "serial",
+  "type",
+  "start_of_usage",
+  "column_break_3",
+  "size",
+  "facing",
+  "area",
+  "section_break_7",
+  "advance",
+  "rent",
+  "current_status",
+  "house_owner",
+  "eb_number",
+  "column_break_12",
+  "door_number",
+  "address",
+  "additional_details_section",
+  "facilities",
+  "tenant_details_section",
+  "tenant_name",
+  "phone_number",
+  "id_proof_number",
+  "id_proof",
+  "start_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "type",
+   "fieldtype": "Link",
+   "label": "Type",
+   "options": "Residence Type"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "facing",
+   "fieldtype": "Link",
+   "label": "Facing",
+   "options": "Direction"
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break",
+   "label": "Residence Details"
+  },
+  {
+   "fieldname": "serial",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Serial",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "start_of_usage",
+   "fieldtype": "Date",
+   "label": "Start of Usage"
+  },
+  {
+   "fieldname": "advance",
+   "fieldtype": "Currency",
+   "label": "Advance"
+  },
+  {
+   "fieldname": "rent",
+   "fieldtype": "Currency",
+   "label": "Rent"
+  },
+  {
+   "fieldname": "current_status",
+   "fieldtype": "Select",
+   "label": "Current Status",
+   "options": "Vacant\nBooked\nOccupied",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_12",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "door_number",
+   "fieldtype": "Data",
+   "label": "Door Number"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Long Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "additional_details_section",
+   "fieldtype": "Section Break",
+   "label": "Additional Details"
+  },
+  {
+   "fieldname": "facilities",
+   "fieldtype": "Long Text",
+   "label": "Facilities"
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Float",
+   "label": "Size (in Sq. Feets)"
+  },
+  {
+   "fieldname": "area",
+   "fieldtype": "Link",
+   "label": "Area",
+   "options": "Residence Area"
+  },
+  {
+   "fieldname": "house_owner",
+   "fieldtype": "Link",
+   "label": "House Owner",
+   "options": "House Owner"
+  },
+  {
+   "fieldname": "eb_number",
+   "fieldtype": "Data",
+   "label": "EB Number"
+  },
+  {
+   "fieldname": "tenant_details_section",
+   "fieldtype": "Section Break",
+   "label": "Tenant Details"
+  },
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name"
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Data",
+   "label": "Phone Number"
+  },
+  {
+   "fieldname": "id_proof_number",
+   "fieldtype": "Data",
+   "label": "ID Proof Number"
+  },
+  {
+   "fieldname": "id_proof",
+   "fieldtype": "Attach Image",
+   "label": "ID Proof"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-09-23 16:43:39.437051",
+ "modified_by": "Administrator",
+ "module": "Thirumurugan Housing",
+ "name": "Residence",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

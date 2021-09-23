@@ -1,0 +1,105 @@
+{
+ "actions": [],
+ "autoname": "field:residence_number",
+ "creation": "2021-07-31 18:44:49.259220",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tenant_name",
+  "phone_number",
+  "id_proof_number",
+  "id_proof",
+  "section_break_5",
+  "residence_number",
+  "advance",
+  "rent",
+  "column_break_9",
+  "start_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Tenant Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "phone_number",
+   "fieldtype": "Int",
+   "label": "Phone Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "id_proof_number",
+   "fieldtype": "Data",
+   "label": "ID Proof Number"
+  },
+  {
+   "fieldname": "id_proof",
+   "fieldtype": "Attach Image",
+   "label": "ID Proof"
+  },
+  {
+   "fieldname": "section_break_5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "residence_number",
+   "fieldtype": "Link",
+   "label": "Residence Number",
+   "options": "Residence",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fetch_from": "residence_number.advance",
+   "fieldname": "advance",
+   "fieldtype": "Currency",
+   "label": "Advance",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "residence_number.rent",
+   "fieldname": "rent",
+   "fieldtype": "Currency",
+   "label": "Rent",
+   "reqd": 1
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-08-05 17:03:01.065466",
+ "modified_by": "Administrator",
+ "module": "Thirumurugan Housing",
+ "name": "Tenant",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
