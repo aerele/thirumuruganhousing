@@ -1,0 +1,84 @@
+{
+ "actions": [],
+ "creation": "2021-08-06 07:05:16.200183",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "serial",
+  "outstanding",
+  "paid_amount",
+  "payment_time",
+  "tenant_name",
+  "tenant_mobile_number",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "serial",
+   "fieldtype": "Link",
+   "label": "Serial",
+   "options": "Tenant"
+  },
+  {
+   "fieldname": "outstanding",
+   "fieldtype": "Currency",
+   "label": "Outstanding"
+  },
+  {
+   "fieldname": "paid_amount",
+   "fieldtype": "Currency",
+   "label": "Paid Amount"
+  },
+  {
+   "fieldname": "payment_time",
+   "fieldtype": "Datetime",
+   "label": "Payment Time"
+  },
+  {
+   "fetch_from": "serial.tenant_name",
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name"
+  },
+  {
+   "fieldname": "tenant_mobile_number",
+   "fieldtype": "Data",
+   "label": "Tenant Mobile Number"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Rent Payment",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2021-08-06 08:14:55.848746",
+ "modified_by": "Administrator",
+ "module": "Thirumurugan Housing",
+ "name": "Rent Payment",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

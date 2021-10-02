@@ -1,0 +1,106 @@
+{
+ "actions": [],
+ "autoname": "format:LOG-{####}",
+ "creation": "2021-09-25 12:00:56.098272",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "serial",
+  "month",
+  "year",
+  "is_rent",
+  "is_advance",
+  "is_others",
+  "amount",
+  "collected_by",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "serial",
+   "fieldtype": "Link",
+   "label": "Serial",
+   "options": "Residence"
+  },
+  {
+   "fieldname": "month",
+   "fieldtype": "Select",
+   "label": "Month",
+   "options": "JAN\nFEB\nMAR\nAPR\nMAY\nJUN\nJUL\nAUG\nSEP\nOCT\nNOV\nDEC"
+  },
+  {
+   "fieldname": "year",
+   "fieldtype": "Data",
+   "label": "Year"
+  },
+  {
+   "default": "NO",
+   "fieldname": "is_rent",
+   "fieldtype": "Select",
+   "label": "Is Rent",
+   "options": "YES\nNO"
+  },
+  {
+   "default": "NO",
+   "fieldname": "is_advance",
+   "fieldtype": "Select",
+   "label": "Is Advance",
+   "options": "YES\nNO"
+  },
+  {
+   "default": "NO",
+   "fieldname": "is_others",
+   "fieldtype": "Select",
+   "label": "Is Others",
+   "options": "YES\nNO"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount"
+  },
+  {
+   "fieldname": "collected_by",
+   "fieldtype": "Link",
+   "label": "Collected By",
+   "options": "User"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Collection Log",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2021-09-30 22:46:05.424457",
+ "modified_by": "Administrator",
+ "module": "Thirumurugan Housing",
+ "name": "Collection Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
