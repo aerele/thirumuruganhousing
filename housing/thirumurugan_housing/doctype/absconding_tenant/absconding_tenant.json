@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "autoname": "format:ABS-{MM}-{DD}-{####}",
+ "creation": "2021-09-24 16:57:51.726963",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tenant_name",
+  "tenant_mobile_number",
+  "tenant_id_proof_number",
+  "tenant_id_proof_iamge",
+  "date_of_abscond",
+  "rent_balance",
+  "pending_advance",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name"
+  },
+  {
+   "fieldname": "tenant_mobile_number",
+   "fieldtype": "Data",
+   "label": "Tenant Mobile Number"
+  },
+  {
+   "fieldname": "tenant_id_proof_number",
+   "fieldtype": "Data",
+   "label": "Tenant Id Proof number"
+  },
+  {
+   "fieldname": "tenant_id_proof_iamge",
+   "fieldtype": "Attach Image",
+   "label": "Tenant ID Proof Iamge"
+  },
+  {
+   "fieldname": "date_of_abscond",
+   "fieldtype": "Date",
+   "label": "Date Of Abscond"
+  },
+  {
+   "fieldname": "rent_balance",
+   "fieldtype": "Currency",
+   "label": "Rent Balance"
+  },
+  {
+   "fieldname": "pending_advance",
+   "fieldtype": "Currency",
+   "label": "Pending Advance"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Absconding Tenant",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2021-09-30 22:46:58.603099",
+ "modified_by": "Administrator",
+ "module": "Thirumurugan Housing",
+ "name": "Absconding Tenant",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
