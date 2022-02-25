@@ -30,11 +30,13 @@
    "options": "Residence"
   },
   {
+   "fetch_from": "serial.tenant_name",
    "fieldname": "tenant_name",
    "fieldtype": "Data",
    "label": "Tenant Name"
   },
   {
+   "fetch_from": "serial.phone_number",
    "fieldname": "tenant_mobile_number",
    "fieldtype": "Data",
    "label": "Tenant Mobile Number"
@@ -51,6 +53,7 @@
    "label": "Year"
   },
   {
+   "fetch_from": "serial.rent",
    "fieldname": "rent",
    "fieldtype": "Currency",
    "label": "Rent "
@@ -87,6 +90,7 @@
   },
   {
    "allow_on_submit": 1,
+   "fetch_from": "serial.start_date",
    "fieldname": "start_date",
    "fieldtype": "Date",
    "label": "Start Date"
@@ -114,7 +118,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-10-08 14:40:40.043999",
+ "modified": "2022-02-25 14:03:47.850991",
  "modified_by": "Administrator",
  "module": "Thirumurugan Housing",
  "name": "Tenant Payment",

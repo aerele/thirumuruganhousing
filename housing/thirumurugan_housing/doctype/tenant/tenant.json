@@ -15,7 +15,9 @@
   "advance",
   "rent",
   "column_break_9",
-  "start_date"
+  "start_date",
+  "paid_advance",
+  "pending_advance"
  ],
  "fields": [
   {
@@ -76,11 +78,21 @@
   {
    "fieldname": "column_break_9",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "paid_advance",
+   "fieldtype": "Currency",
+   "label": "Paid Advance"
+  },
+  {
+   "fieldname": "pending_advance",
+   "fieldtype": "Currency",
+   "label": "Pending Advance"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-08-05 17:03:01.065466",
+ "modified": "2022-02-24 16:23:54.584407",
  "modified_by": "Administrator",
  "module": "Thirumurugan Housing",
  "name": "Tenant",

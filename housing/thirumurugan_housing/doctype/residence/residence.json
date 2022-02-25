@@ -6,7 +6,6 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "tenant_absconed",
   "serial",
   "type",
   "start_of_usage",
@@ -16,7 +15,6 @@
   "area",
   "section_break_7",
   "advance",
-  "paid_advance",
   "rent",
   "current_status",
   "house_owner",
@@ -31,8 +29,11 @@
   "phone_number",
   "id_proof_number",
   "id_proof",
+  "paid_advance",
+  "pending_advance",
   "start_date",
-  "amended_from"
+  "amended_from",
+  "tenant_absconed"
  ],
  "fields": [
   {
@@ -165,7 +166,7 @@
   {
    "fieldname": "tenant_absconed",
    "fieldtype": "Button",
-   "label": "Tenant Absconed"
+   "label": "Vacate"
   },
   {
    "fieldname": "amended_from",
@@ -180,11 +181,16 @@
    "fieldname": "paid_advance",
    "fieldtype": "Currency",
    "label": "Paid Advance"
+  },
+  {
+   "fieldname": "pending_advance",
+   "fieldtype": "Currency",
+   "label": "Pending Advance"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2021-09-30 10:11:51.645963",
+ "modified": "2022-02-25 09:55:09.204871",
  "modified_by": "Administrator",
  "module": "Thirumurugan Housing",
  "name": "Residence",

@@ -1,0 +1,96 @@
+{
+ "actions": [],
+ "autoname": "format:ABS-{MM}-{DD}-{####}",
+ "creation": "2021-09-24 16:57:51.726963",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "tenant_name",
+  "tenant_mobile_number",
+  "tenant_id_proof_number",
+  "tenant_id_proof_iamge",
+  "date_of_abscond",
+  "advance_paid",
+  "advance_returned",
+  "rent_balance",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "tenant_name",
+   "fieldtype": "Data",
+   "label": "Tenant Name"
+  },
+  {
+   "fieldname": "tenant_mobile_number",
+   "fieldtype": "Data",
+   "label": "Tenant Mobile Number"
+  },
+  {
+   "fieldname": "tenant_id_proof_number",
+   "fieldtype": "Data",
+   "label": "Tenant Id Proof number"
+  },
+  {
+   "fieldname": "tenant_id_proof_iamge",
+   "fieldtype": "Attach Image",
+   "label": "Tenant ID Proof Iamge"
+  },
+  {
+   "fieldname": "date_of_abscond",
+   "fieldtype": "Date",
+   "label": "Date Of Abscond"
+  },
+  {
+   "fieldname": "rent_balance",
+   "fieldtype": "Currency",
+   "label": "Rent Outstanding"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Vacated tenants",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "advance_returned",
+   "fieldtype": "Currency",
+   "label": "Advance Returned"
+  },
+  {
+   "fieldname": "advance_paid",
+   "fieldtype": "Currency",
+   "label": "Advance Paid"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-02-25 11:25:25.335673",
+ "modified_by": "Administrator",
+ "module": "Thirumurugan Housing",
+ "name": "Vacated tenants",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

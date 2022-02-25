@@ -12,11 +12,11 @@ class CollectionLog(Document):
 			frappe.msgprint('success')
 			p_key=frappe.db.get_value('Tenant Payment', {'serial': self.serial, 'month': self.month, 'year': self.year}, 'name')
 			get_amt=frappe.db.get_value('Tenant Payment', {'serial': self.serial, 'month': self.month, 'year': self.year}, 'outstanding')
-			if self.amount > get_amt:
+			if ((self.amount) > (get_amt)):
 				frappe.throw('Amount is Exceeded then Outstanding')
 			t_doc=frappe.get_doc('Tenant Payment', p_key)
-			t_doc.outstanding=t_doc.outstanding-self.amount
-			t_doc.total_outstanding=int(t_doc.total_outstanding)-self.amount
+			t_doc.paid_amount=t_doc.paid_amount+self.amount
+			
 			t_doc.save()
 		if  self.is_advance =='YES':
 			p_key=frappe.db.get_value('Residence', {'serial': self.serial})
