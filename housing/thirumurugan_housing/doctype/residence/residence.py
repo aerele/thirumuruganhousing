@@ -12,7 +12,7 @@ class Residence(Document):
 	def before_save(self):
 		if(self.tenant_name is not None):
 			self.current_status="Occupied"
-		if(self.paid_advance and self.current_status=="Occupied"):
+		if(self.current_status=="Occupied"):
 			self.pending_advance=self.advance-self.paid_advance
 
 @frappe.whitelist()

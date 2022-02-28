@@ -28,10 +28,18 @@ class CollectionLog(Document):
 		if self.is_others =='YES':
 			pass
 	def on_cancel(self):
-		p_key=frappe.db.get_value('Tenant Payment', {'serial':self.serial, 'month':self.month, 'year':self.year}, 'name')
-		t_doc=frappe.get_doc('Tenant Payment', p_key)
-		t_doc.paid_amount = t_doc.paid_amount - float(self.amount)
-		t_doc.save()
+		if(self.is_advance=="YES"):
+			p_key=frappe.db.get_value('Residence', {'serial': self.serial})
+			res_doc=frappe.get_doc('Residence', p_key)
+			res_doc.paid_advance=res_doc.paid_advance-float(self.amount)
+			res_doc.save()
+			res_doc.reload()
+			pass
+		else:
+			p_key=frappe.db.get_value('Tenant Payment', {'serial':self.serial, 'month':self.month, 'year':self.year}, 'name')
+			t_doc=frappe.get_doc('Tenant Payment', p_key)
+			t_doc.paid_amount = t_doc.paid_amount - float(self.amount)
+			t_doc.save()
 
 
 			
