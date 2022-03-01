@@ -8,6 +8,8 @@ from frappe.model.document import Document
 from frappe.utils import date_diff
 from frappe.utils import today
 from datetime import datetime
+from datetime import date
+from calendar import monthrange
 class TenantPayment(Document):
 	def before_save(self):
 		if(self.rent and self.paid_amount):
@@ -31,23 +33,29 @@ def get_date(tenant_name):
 		start_date = frappe.db.get_value('Residence', {'tenant_name':tenant_name}, ['start_date'])
 	return start_date
 def rent_payment():
-	Date=today()
+	Date=date.today()
 	if(Date.day!=1):
 		return
 	oc_res = frappe.db.get_list('Residence',{'current_status': 'Occupied'})
 	Month=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
 	for res in oc_res:
-		res_details =frappe.db.get_list('Residence',{'name': res['name']},['serial', 'tenant_name', 'phone_number', 'rent'])
+		res_details =frappe.db.get_list('Residence',{'name': res['name']},['serial', 'tenant_name', 'phone_number', 'rent','start_date'])
 		tenant_entry =frappe.new_doc('Tenant Payment')
 		tenant_entry.serial = res_details[0]['serial']
 		tenant_entry.tenant_name = res_details[0]['tenant_name']
 		tenant_entry.tenant_mobile_number = res_details[0]['phone_number']
-		tenant_entry.rent = res_details[0]['rent']
 		tenant_entry.month = Month[Date.month-1]
-		tenant_entry.start_date = get_date(res_details[0]['tenant_name'])
+		tenant_entry.start_date = res_details[0]['start_date']
 		tenant_entry.year=Date.year
+		if res_details[0]['start_date'].day!=1 and res_details[0]['start_date'].month ==Date.month-1:
+			num_days = monthrange(res_details[0]['start_date'].year,res_details[0]['start_date'].month )[1]
+			amount=(res_details[0]['rent']/num_days)*(num_days-(res_details[0]['start_date'].day-1))
+			tenant_entry.rent=amount
+		else:
+			tenant_entry.rent = res_details[0]['rent']
 		rent_bal = frappe.db.sql('''select tenant_name,sum(outstanding) from `tabTenant Payment` where outstanding > 0 and serial=%s and name!=%s''', (tenant_entry.serial,tenant_entry.name), as_dict=1)
-		tenant_entry.total_outstanding = rent_bal[0]['sum(outstanding)']
+		if len(rent_bal):
+			tenant_entry.total_outstanding = rent_bal[0]['sum(outstanding)']
 		tenant_entry.save()
 
 
@@ -64,7 +72,7 @@ def make_tenant_payment(self):
 		tenant_entry.rent = res_details[0]['rent']
 		tenant_entry.month = self.month
 		tenant_entry.start_date = get_date(res_details[0]['tenant_name'])
-		tenant_entry.paid_on = today()
+		tenant_entry.paid_on = date.today()
 		tot_bal = frappe.db.sql('''select tenant_name, sum(outstanding) from `tabTenant Payment` where outstanding > 0 and serial=%s ''', (tenant_entry.serial), as_dict=1)
 		tenant_entry.total_outstanding = tot_bal[0]['sum(outstanding)']
 		#tenant_entry.save()
