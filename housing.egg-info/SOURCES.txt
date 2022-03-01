@@ -4,6 +4,7 @@ license.txt
 requirements.txt
 setup.py
 housing/__init__.py
+housing/api.py
 housing/hooks.py
 housing/modules.txt
 housing/patches.txt
@@ -20,6 +21,16 @@ housing/templates/__init__.py
 housing/templates/pages/__init__.py
 housing/thirumurugan_housing/__init__.py
 housing/thirumurugan_housing/doctype/__init__.py
+housing/thirumurugan_housing/doctype/absconding_tenant/__init__.py
+housing/thirumurugan_housing/doctype/absconding_tenant/absconding_tenant.js
+housing/thirumurugan_housing/doctype/absconding_tenant/absconding_tenant.json
+housing/thirumurugan_housing/doctype/absconding_tenant/absconding_tenant.py
+housing/thirumurugan_housing/doctype/absconding_tenant/test_absconding_tenant.py
+housing/thirumurugan_housing/doctype/collection_log/__init__.py
+housing/thirumurugan_housing/doctype/collection_log/collection_log.js
+housing/thirumurugan_housing/doctype/collection_log/collection_log.json
+housing/thirumurugan_housing/doctype/collection_log/collection_log.py
+housing/thirumurugan_housing/doctype/collection_log/test_collection_log.py
 housing/thirumurugan_housing/doctype/direction/__init__.py
 housing/thirumurugan_housing/doctype/direction/direction.js
 housing/thirumurugan_housing/doctype/direction/direction.json
@@ -55,3 +66,11 @@ housing/thirumurugan_housing/doctype/tenant/tenant.js
 housing/thirumurugan_housing/doctype/tenant/tenant.json
 housing/thirumurugan_housing/doctype/tenant/tenant.py
 housing/thirumurugan_housing/doctype/tenant/test_tenant.py
+housing/thirumurugan_housing/doctype/tenant_payment/__init__.py
+housing/thirumurugan_housing/doctype/tenant_payment/tenant_payment.js
+housing/thirumurugan_housing/doctype/tenant_payment/tenant_payment.json
+housing/thirumurugan_housing/doctype/tenant_payment/tenant_payment.py
+housing/thirumurugan_housing/doctype/tenant_payment/test_tenant_payment.py
+housing/thirumurugan_housing/print_format/__init__.py
+housing/thirumurugan_housing/print_format/print/__init__.py
+housing/thirumurugan_housing/print_format/print/print.json

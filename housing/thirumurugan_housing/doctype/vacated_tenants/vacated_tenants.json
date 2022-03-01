@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "serial",
   "tenant_name",
   "tenant_mobile_number",
   "tenant_id_proof_number",
@@ -65,12 +66,17 @@
    "fieldname": "advance_paid",
    "fieldtype": "Currency",
    "label": "Advance Paid"
+  },
+  {
+   "fieldname": "serial",
+   "fieldtype": "Data",
+   "label": "serial"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-02-25 11:25:25.335673",
+ "modified": "2022-03-01 12:35:46.081389",
  "modified_by": "Administrator",
  "module": "Thirumurugan Housing",
  "name": "Vacated tenants",
