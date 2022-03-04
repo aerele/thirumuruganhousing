@@ -23,6 +23,7 @@ def get_transactions():
 				"serial":i.serial,
 				"customer_name": frappe.db.get_value("Residence", i.serial, "tenant_name"),
 				"customer_mobile_number": frappe.db.get_value("Residence", i.serial, "phone_number"),
+				"area":frappe.db.get_value("Residence",i.serial,"area"),
 				"paid_due_amount": i.amount,
 				"outstandig":[str(outstanding)+"-"+str(i.month)+"-"+str(i.year),"Advance-"+str(t), "Others"]
 				})

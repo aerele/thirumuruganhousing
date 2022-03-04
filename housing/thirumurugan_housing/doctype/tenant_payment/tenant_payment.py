@@ -44,11 +44,11 @@ def rent_payment():
 		tenant_entry.serial = res_details[0]['serial']
 		tenant_entry.tenant_name = res_details[0]['tenant_name']
 		tenant_entry.tenant_mobile_number = res_details[0]['phone_number']
-		tenant_entry.month = Month[Date.month-1]
+		tenant_entry.month = Month[Date.month-2]
 		tenant_entry.start_date = res_details[0]['start_date']
 		tenant_entry.year=Date.year
 
-		if (res_details[0]['start_date'].day!=1) and  ((res_details[0]['start_date'].month==12 and res_details[0]['start_date'].year==Date.year-1 )or (res_details[0]['start_date'].month ==Date.month-1 and res_details['start_date'].year==Date.year)):
+		if (res_details[0]['start_date'].day!=1) and  ((res_details[0]['start_date'].month==12 and res_details[0]['start_date'].year==Date.year-1 )or (res_details[0]['start_date'].month ==Date.month-1 and res_details[0]['start_date'].year==Date.year)):
 			num_days = monthrange(res_details[0]['start_date'].year,res_details[0]['start_date'].month )[1]
 			amount=(res_details[0]['rent']/num_days)*(num_days-(res_details[0]['start_date'].day-1))
 			tenant_entry.rent=amount
