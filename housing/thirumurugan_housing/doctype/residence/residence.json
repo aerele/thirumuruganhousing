@@ -183,14 +183,16 @@
    "label": "Paid Advance"
   },
   {
+   "default": "0",
    "fieldname": "pending_advance",
    "fieldtype": "Currency",
-   "label": "Pending Advance"
+   "label": "Pending Advance",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-02-25 09:55:09.204871",
+ "modified": "2022-03-04 12:34:03.125192",
  "modified_by": "Administrator",
  "module": "Thirumurugan Housing",
  "name": "Residence",
