@@ -2,34 +2,12 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on('Residence', {
-	 refresh: function(frm) {
-		if(frm.doc.current_status=="Vacant"){
-			console.log(frm.doc)
-			frm.doc.tenant_name=""
-			frm.doc.phone_number=""
-			frm.doc.id_proof_number=""
-			frm.doc.id_proof=""
-			frm.doc.paid_advance=""
-			frm.doc.pending_advance=""
-			frm.doc.start_date=""
-			frm.doc.save()
-			console.log(frm.doc)
-
-		}
-
-	 },
+	//  refresh: function(frm) {
+//}
 	tenant_absconed: function (frm) {
 		frappe.call({
 			method: "housing.thirumurugan_housing.doctype.residence.residence.absconded_entry",
 			args: { doc: frm.doc },
-			callback: function (r) {
-				frm.doc.current_status = r.message
-				frm.refresh_field('current_status');
-				cur_frm.save()
-				
-				
-				
-			}
 		})
 	}
 });

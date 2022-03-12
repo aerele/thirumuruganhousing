@@ -6,6 +6,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "serial",
   "tenant_name",
   "tenant_mobile_number",
   "tenant_id_proof_number",
@@ -14,7 +15,9 @@
   "advance_paid",
   "advance_returned",
   "rent_balance",
-  "amended_from"
+  "amended_from",
+  "column_break_11",
+  "expenses"
  ],
  "fields": [
   {
@@ -65,12 +68,26 @@
    "fieldname": "advance_paid",
    "fieldtype": "Currency",
    "label": "Advance Paid"
+  },
+  {
+   "fieldname": "serial",
+   "fieldtype": "Data",
+   "label": "serial"
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "expenses",
+   "fieldtype": "Currency",
+   "label": "Expenses"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2022-02-25 11:25:25.335673",
+ "modified": "2022-03-11 15:20:38.877807",
  "modified_by": "Administrator",
  "module": "Thirumurugan Housing",
  "name": "Vacated tenants",

@@ -23,6 +23,7 @@ def get_transactions():
 				"serial":i.serial,
 				"customer_name": frappe.db.get_value("Residence", i.serial, "tenant_name"),
 				"customer_mobile_number": frappe.db.get_value("Residence", i.serial, "phone_number"),
+				"area":frappe.db.get_value("Residence",i.serial,"area"),
 				"paid_due_amount": i.amount,
 				"outstandig":[str(outstanding)+"-"+str(i.month)+"-"+str(i.year),"Advance-"+str(t), "Others"]
 				})
@@ -82,6 +83,14 @@ def user_validation():
 def set_detail_to_app(house_no):
 	outstanding_rent =[]
 	a = frappe.db.get_value('Residence',{'serial' : house_no},["tenant_name","phone_number", "area"])
+	if not a:
+		res=frappe.db.sql('''select name  from `tabResidence` where name like '%,%'  ''', as_dict=1)
+		res_list=res[0]["name"].split(',')
+		if(str(house_no) in res_list):
+			house_no=res[0]["name"]
+			print(house_no)
+			a = frappe.db.get_value('Residence',{'serial' : house_no},["tenant_name","phone_number", "area"])
+		
 	if frappe.db.get_value('Tenant Payment',{'serial' : house_no},'total_outstanding'):
 		l=frappe.db.get_list('Tenant Payment',{'serial' :house_no},['outstanding','month','year'])
 		for i in l:

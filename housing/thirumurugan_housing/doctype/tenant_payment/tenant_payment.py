@@ -37,28 +37,39 @@ def rent_payment():
 	if(Date.day!=1):
 		return
 	oc_res = frappe.db.get_list('Residence',{'current_status': 'Occupied'})
-	Month=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
+
 	for res in oc_res:
+
 		res_details =frappe.db.get_list('Residence',{'name': res['name']},['serial', 'tenant_name', 'phone_number', 'rent','start_date'])
-		tenant_entry =frappe.new_doc('Tenant Payment')
-		tenant_entry.serial = res_details[0]['serial']
-		tenant_entry.tenant_name = res_details[0]['tenant_name']
-		tenant_entry.tenant_mobile_number = res_details[0]['phone_number']
-		tenant_entry.month = Month[Date.month-1]
-		tenant_entry.start_date = res_details[0]['start_date']
-		tenant_entry.year=Date.year
-		if res_details[0]['start_date'].day!=1 and res_details[0]['start_date'].month ==Date.month-1:
-			num_days = monthrange(res_details[0]['start_date'].year,res_details[0]['start_date'].month )[1]
-			amount=(res_details[0]['rent']/num_days)*(num_days-(res_details[0]['start_date'].day-1))
-			tenant_entry.rent=amount
-		else:
-			tenant_entry.rent = res_details[0]['rent']
-		rent_bal = frappe.db.sql('''select tenant_name,sum(outstanding) from `tabTenant Payment` where outstanding > 0 and serial=%s and name!=%s''', (tenant_entry.serial,tenant_entry.name), as_dict=1)
-		if len(rent_bal):
-			tenant_entry.total_outstanding = rent_bal[0]['sum(outstanding)']
-		tenant_entry.save()
 
+		tenant_entry_check=frappe.db.sql('''select name  from `tabTenant Payment` where serial=%s and tenant_name=%s  and year=%s and month=%s ''',(res_details[0]['serial'],res_details[0]['tenant_name'],Date.year,find_month(Date.month-2)), as_dict=1)
+		if not(tenant_entry_check):
+			tenant_entry =frappe.new_doc('Tenant Payment')
+			tenant_entry.serial = res_details[0]['serial']
+			tenant_entry.tenant_name = res_details[0]['tenant_name']
+			tenant_entry.tenant_mobile_number = res_details[0]['phone_number']
+			tenant_entry.month=find_month(Date.month-2)
+			tenant_entry.start_date = res_details[0]['start_date']
+			tenant_entry.year=Date.year
 
+			if (res_details[0]['start_date'].day!=1) and  ((res_details[0]['start_date'].month==12 and res_details[0]['start_date'].year==Date.year-1 )or (res_details[0]['start_date'].month ==Date.month-1 and res_details[0]['start_date'].year==Date.year)):
+				num_days = monthrange(res_details[0]['start_date'].year,res_details[0]['start_date'].month )[1]
+				amount=(res_details[0]['rent']/num_days)*(num_days-(res_details[0]['start_date'].day-1))
+				tenant_entry.rent=amount
+		
+			else:
+				tenant_entry.rent = res_details[0]['rent']
+			rent_bal = frappe.db.sql('''select tenant_name,sum(outstanding) from `tabTenant Payment` where outstanding > 0 and serial=%s and name!=%s''', (tenant_entry.serial,tenant_entry.name), as_dict=1)
+			if len(rent_bal):
+				tenant_entry.total_outstanding = rent_bal[0]['sum(outstanding)']
+			tenant_entry.save()
+
+def find_month(month):
+	Month=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
+	if(month==-1):
+		return "DEC"
+	else:
+		return Month[month]
 @frappe.whitelist()
 def make_tenant_payment(self):
 	# Make sure the Residence is changed to Vacant on absconing and vacating
