@@ -25,13 +25,14 @@ class TenantPayment(Document):
 def get_date(tenant_name):
 	start_date=""
 	if frappe.db.exists("Tenant Payment",{"tenant_name": tenant_name}):
-		
 		start_date=str(datetime.strptime(frappe.utils.today(), '%Y-%m-%d').replace(day=1))
 		sd=start_date.split()
 		start_date = sd[0]
 	else:
 		start_date = frappe.db.get_value('Residence', {'tenant_name':tenant_name}, ['start_date'])
 	return start_date
+
+@frappe.whitelist()
 def rent_payment():
 	Date=date.today()
 	if(Date.day!=1):
@@ -43,7 +44,7 @@ def rent_payment():
 		res_details =frappe.db.get_list('Residence',{'name': res['name']},['serial', 'tenant_name', 'phone_number', 'rent','start_date'])
 
 		tenant_entry_check=frappe.db.sql('''select name  from `tabTenant Payment` where serial=%s and tenant_name=%s  and year=%s and month=%s ''',(res_details[0]['serial'],res_details[0]['tenant_name'],Date.year,find_month(Date.month-2)), as_dict=1)
-		if not(tenant_entry_check):
+		if (not(tenant_entry_check))and(res_details[0]['start_date'])and(not(res_details[0]['start_date'].year==Date.year and res_details[0]['start_date'].month>=Date.month )):
 			tenant_entry =frappe.new_doc('Tenant Payment')
 			tenant_entry.serial = res_details[0]['serial']
 			tenant_entry.tenant_name = res_details[0]['tenant_name']
@@ -56,7 +57,6 @@ def rent_payment():
 				num_days = monthrange(res_details[0]['start_date'].year,res_details[0]['start_date'].month )[1]
 				amount=(res_details[0]['rent']/num_days)*(num_days-(res_details[0]['start_date'].day-1))
 				tenant_entry.rent=amount
-		
 			else:
 				tenant_entry.rent = res_details[0]['rent']
 			rent_bal = frappe.db.sql('''select tenant_name,sum(outstanding) from `tabTenant Payment` where outstanding > 0 and serial=%s and name!=%s''', (tenant_entry.serial,tenant_entry.name), as_dict=1)

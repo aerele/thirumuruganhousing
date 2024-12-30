@@ -8,6 +8,8 @@ from frappe.model.document import Document
 from frappe.utils import today
 class CollectionLog(Document):
 	def before_submit(self):
+		if not self.phone_number:
+			self.phone_number = frappe.db.get_value('Residence', self.serial, phone_number)
 		if self.is_rent =='YES':
 			p_key=frappe.db.get_value('Tenant Payment', {'serial': self.serial, 'month': self.month, 'year': self.year}, 'name')
 			get_amt=frappe.db.get_value('Tenant Payment', {'serial': self.serial, 'month': self.month, 'year': self.year}, 'outstanding')
@@ -40,10 +42,11 @@ class CollectionLog(Document):
 			t_doc=frappe.get_doc('Tenant Payment', p_key)
 			t_doc.paid_amount = t_doc.paid_amount - float(self.amount)
 			t_doc.save()
+	def autoname(self):
+		if(self.is_advance=="YES"):
+			self.naming_abbr = 'AD'
+		else:
+			self.naming_abbr = 'RT'
 
-
-			
-
-
-
-	
+		if not self.phone_number:
+			self.phone_number = frappe.db.get_value('Residence', self.serial, phone_number)

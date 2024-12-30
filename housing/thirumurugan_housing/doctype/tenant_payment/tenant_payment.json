@@ -44,6 +44,7 @@
   {
    "fieldname": "month",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Month",
    "options": "JAN\nFEB\nMAR\nAPR\nMAY\nJUN\nJUL\nAUG\nSEP\nOCT\nNOV\nDEC"
   },
@@ -117,7 +118,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-01 11:29:19.275816",
+ "modified": "2022-06-07 15:18:30.135185",
  "modified_by": "Administrator",
  "module": "Thirumurugan Housing",
  "name": "Tenant Payment",

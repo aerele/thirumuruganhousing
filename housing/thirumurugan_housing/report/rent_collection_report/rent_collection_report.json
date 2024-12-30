@@ -1,0 +1,42 @@
+{
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2022-03-07 07:11:25.461557",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "label": "From Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "label": "To Date",
+   "mandatory": 1,
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2022-04-22 18:03:09.054685",
+ "modified_by": "Administrator",
+ "module": "Thirumurugan Housing",
+ "name": "Rent Collection Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "select \ncl.name as 'Bill No:Link/Collection Log:180',\ncl.serial as 'Serial:Link/Residence:180',\nser.area as 'Area:Data:180',\nser.tenant_name as 'Tenant Name:Data:180',\nser.phone_number as 'Phone Number:Data:180',\npaid_on as 'Paid Date:Date:180',\nmonth as 'Month:Data:100',\ncollected_by as 'Rent Collected By:Data:180',\ncase when is_rent = 'YES' then amount else 0 end as 'Collected Rent:Currency:180',\ncase when is_advance = 'YES' then cast(amount as decimal(10,2)) else 0 end as 'Collected Advance:Currency:180'\nfrom `tabCollection Log` as cl\ninner join `tabResidence` as ser on cl.serial = ser.name\nwhere paid_on between %(from_date)s and %(to_date)s and cl.docstatus in (0, 1)",
+ "ref_doctype": "Collection Log",
+ "report_name": "Rent Collection Report",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

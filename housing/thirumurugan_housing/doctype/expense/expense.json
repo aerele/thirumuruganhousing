@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2022-03-11 15:15:51.878343",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -8,7 +9,8 @@
  "field_order": [
   "serial",
   "amount",
-  "date_of_expense"
+  "date_of_expense",
+  "naming_series"
  ],
  "fields": [
   {
@@ -26,11 +28,20 @@
    "fieldname": "date_of_expense",
    "fieldtype": "Date",
    "label": "Date Of Expense"
+  },
+  {
+   "default": "EXP-.YY.-.MM.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "EXP-.YY.-.MM.-",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-03-11 15:29:36.729138",
+ "modified": "2022-03-16 23:28:40.110616",
  "modified_by": "Administrator",
  "module": "Thirumurugan Housing",
  "name": "Expense",
